@@ -1,0 +1,19 @@
+{
+  "name": "telefix",
+  "version": "1.0.0",
+  "description": "A scheduler for people that binge watch shows",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/technomoda/telefix.git"
+  },
+  "author": "technomoda",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/technomoda/telefix/issues"
+  },
+  "homepage": "https://github.com/technomoda/telefix#readme"
+}
