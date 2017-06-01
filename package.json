@@ -11,9 +11,10 @@
   "bugs": {
     "url": "https://github.com/technomoda/telefix/issues"
   },
-  "homepage": "https://github.com/technomoda/telefix#readme",
+  "homepage": "https://github.com/",
   "private": true,
   "dependencies": {
+    "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },
@@ -60,7 +61,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "coverage": "node scripts/test.js --env=jsdom --coverage"
   },
   "jest": {
     "collectCoverageFrom": [
