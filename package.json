@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/technomoda/telefix/issues"
   },
-  "homepage": "https://technomoda.github.io/telefix/",
+  "homepage": "http://telefix.xyz/",
   "private": true,
   "dependencies": {
     "prop-types": "^15.5.10",
