@@ -5,7 +5,7 @@ class SearchButton extends Component {
   render() {
     return (
       <button className={this.props.className + " search-button"}>
-        Search
+        search
       </button>
     );
   }

@@ -4,8 +4,8 @@
 
 .App-header {
   background-color: rgba(233, 233, 233, 0.9);
-  height: 88px;
-  font-size: 36px;
+  height: 65px;
+  font-size: 32px;
   color: #606060;
   display: flex;
   flex-flow: row nowrap;
@@ -21,19 +21,15 @@
   margin-right: 46px;
 }
 
-.App-intro {
-  font-size: large;
-}
-
 .title-container {
   width: 50%;
   margin: 0px auto;
 }
 
 .title {
-  margin: 250px 0px 0px 0px;
+  margin: 200px 0px 0px 0px;
   font-weight: 500;
-  font-size: 119px;
+  font-size: 96px;
   letter-spacing: 7.1px;
   text-align: left;
   color: #585858;
@@ -42,17 +38,6 @@
 .bars-container {
   display: flex;
   flex-flow: row nowrap;
-}
-
-.search-bar {
-  height: 80px;
-  font-size: 50px;
-  border-radius: 7px;
-  border: solid 1px #979797;
-  outline:0px !important;
-  -webkit-appearance:none;
-  padding-left: 32px;
-  font-family: "Varela Round", sans-serif;
 }
 
 .text-search {

@@ -19,15 +19,14 @@ class App extends Component {
           <div className="bars-container">
             <SearchBar
               placeholder="tv series"
-              className="search-bar text-search"
+              className="text-search"
             />
             <SearchBar
               placeholder="#"
-              className="search-bar season-search"
+              className="season-search"
             />
           </div>
           <SearchButton />
-          
         </div>
       </div>
     );
