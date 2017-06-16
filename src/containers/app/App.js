@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
+import InfoBar from '../../components/info-bar/InfoBar';
 import SearchBar from '../../components/search-bar/SearchBar';
 import SearchButton from '../../components/search-button/SearchButton';
 import SMPTEBackground from '../../components/smpte-background/SMPTEBackground';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      numOfHours: "[x]",
+      seriesName: "[y]"
+    };
+  }
+
   render() {
+    const {numOfHours, seriesName} = this.state;
     return (
       <div className="App">
         <SMPTEBackground />
@@ -28,6 +38,7 @@ class App extends Component {
           </div>
           <SearchButton />
         </div>
+        <InfoBar numOfHours={numOfHours} seriesName={seriesName}/>
       </div>
     );
   }

@@ -64,7 +64,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "coverage": "node scripts/test.js --env=jsdom --coverage",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build && node scripts/create-cname.js",
     "deploy": "gh-pages -d build"
   },
   "jest": {
