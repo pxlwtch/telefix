@@ -1,6 +1,6 @@
-<div display="block" align="center"><img width=45% src="https://github.com/technomoda/telefix/blob/master/telepix-logo.png"></div>
-
-# About telefix.xyz?
+<div display="block" align="center"><img width=25% src="https://github.com/technomoda/telefix/blob/master/telepix-logo.png"></div>
+<hr/>
+# About telefix.xyz
 telefix is an online search for any tv series or movie that will tell you how long it would take you to watch. 
 
 ## Creators
