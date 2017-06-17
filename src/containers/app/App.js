@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import InfoBar from '../../components/info-bar/InfoBar';
 import SearchBar from '../../components/search-bar/SearchBar';
-import SearchButton from '../../components/search-button/SearchButton';
+import Button from '../../components/button/Button';
 import SMPTEBackground from '../../components/smpte-background/SMPTEBackground';
-
 
 class App extends Component {
   constructor(props) {
@@ -36,9 +35,12 @@ class App extends Component {
               className="season-search"
             />
           </div>
-          <SearchButton />
+          <Button buttonText="search" />
         </div>
-        <InfoBar numOfHours={numOfHours} seriesName={seriesName}/>
+        <div className="info-bar">
+          <InfoBar numOfHours={numOfHours} seriesName={seriesName}/>
+          <Button buttonText="use calendar" />
+        </div>
       </div>
     );
   }

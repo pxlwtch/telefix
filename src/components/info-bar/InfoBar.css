@@ -1,17 +1,4 @@
-.info-bar {
-  background-color: #6d6d6d;
-  color: #fff;
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
-  padding: 45px 0px 35px;
-}
-
 .info-bar-text {
   font-size: 42px;
-}
-
-.calendar-link {
-  font-size: 35px;
-  margin-top: 20px;
+  color: #fff;
 }

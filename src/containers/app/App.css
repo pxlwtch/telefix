@@ -49,3 +49,11 @@
   margin-left: 14px;
 }
 
+.info-bar {
+  background-color: #6d6d6d;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  padding: 25px 0px 15px;
+}
+

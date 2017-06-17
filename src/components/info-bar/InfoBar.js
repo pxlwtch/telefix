@@ -5,13 +5,8 @@ import './InfoBar.css';
 class InfoBar extends Component {
   render() {
     return (
-      <div className="info-bar">
-        <div className="info-bar-text">
-          It will take you {this.props.numOfHours} to watch {this.props.seriesName}
-        </div>
-        <div className="calendar-link">
-          use calendar
-        </div>
+      <div className="info-bar-text">
+        It will take you {this.props.numOfHours} to watch {this.props.seriesName}
       </div>
     );
   }
