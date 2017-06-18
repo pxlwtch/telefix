@@ -31,7 +31,7 @@
   font-weight: 500;
   font-size: 96px;
   letter-spacing: 7.1px;
-  text-align: left;
+  text-align: center;
   color: #585858;
   text-shadow: 3px -2px 3px rgba(0,0,0,0.5);
 }
@@ -40,8 +40,22 @@
   flex-flow: row nowrap;
 }
 
-.text-search {
-  width: 100%;
+.react-autosuggest__input {
+  height: 60px;
+  font-size: 40px;
+  border-radius: 7px;
+  border: solid 1px #979797;
+  outline:0px !important;
+  -webkit-appearance:none;
+  padding-left: 32px;
+  font-family: "Varela Round", sans-serif;
+}
+
+.react-autosuggest__suggestions-container {
+}
+
+.react-autosuggest__suggestion {
+  list-style-type: none;
 }
 
 .season-search {

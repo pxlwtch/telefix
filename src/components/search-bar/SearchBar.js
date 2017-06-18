@@ -7,6 +7,7 @@ class SearchBar extends Component {
     return (
       <input 
         className={this.props.className + " search-bar"}
+        onChange={this.props.onChange}
         placeholder={this.props.placeholder}
       />
     );
@@ -15,6 +16,7 @@ class SearchBar extends Component {
 
 SearchBar.propTypes = {
   className: PropTypes.string,
+  onChange: PropTypes.func,
   placeholder: PropTypes.string
 };
 

@@ -16,7 +16,9 @@
   "dependencies": {
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-autosuggest": "^9.1.0",
+    "react-dom": "^15.5.4",
+    "superagent": "^3.5.2"
   },
   "devDependencies": {
     "autoprefixer": "7.1.0",
