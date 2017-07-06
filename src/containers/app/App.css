@@ -58,10 +58,25 @@
 }
 
 .react-autosuggest__suggestions-container {
+  z-index: 2;
+}
+
+.react-autosuggest__suggestions-list {
+  display: block;
+  list-style-type: none;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 0px;
+  font-size: 22px;
 }
 
 .react-autosuggest__suggestion {
-  list-style-type: none;
+  padding: 5px 0px 5px 10px;
+  background-color: white;
+  text-align: left;
+  cursor: pointer;
 }
 
 .season-search {

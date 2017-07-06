@@ -5,6 +5,8 @@ class Button extends Component {
   render() {
     return (
       <button 
+        data-tip={this.props.dataTip}
+        data-for={this.props.dataFor} 
         className={this.props.className + " button"}
         onClick={this.props.onClick}
       >

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Autosuggest from 'react-autosuggest';
+import ReactTooltip from 'react-tooltip';
 import './App.css';
 import InfoBar from '../../components/info-bar/InfoBar';
 import SearchBar from '../../components/search-bar/SearchBar';
@@ -8,7 +9,9 @@ import { telefixLogoPng } from '../../images/images';
 import SMPTEBackground from '../../components/smpte-background/SMPTEBackground';
 import {
   getTitlesFromSearch,
-  searchAPIWithQuery
+  searchAPIWithQuery,
+  getTVShowFromId
+
 } from '../../api/tmdb';
 
 class App extends Component {
@@ -20,6 +23,9 @@ class App extends Component {
       numOfHours: "[x]",
       seriesName: "[y]",
       suggestions: [],
+      numOfSeasons: 0,
+      numOfEpisodes: 0,
+      avgEpisodeTime: 0
     };
 
     this.handleSeasonSearchChange = this.handleSeasonSearchChange.bind(this);
@@ -28,23 +34,34 @@ class App extends Component {
     this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
     this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.triggerCalculation = this.triggerCalculation.bind(this);
   }
 
   handleSeasonSearchChange(event) {
     event.preventDefault();
-    console.log(event.target.value);
     this.setState({searchedSeason: event.target.value});
   }
 
   // When suggestion is clicked, Autosuggest needs to populate the input element
   // based on the clicked suggestion. Teach Autosuggest how to calculate the
   // input value for every given suggestion.
-  getSuggestionValue(suggestion) { return suggestion.original_name; }
+  getSuggestionValue(suggestion) { 
+    getTVShowFromId(suggestion.id)
+    .then((result) => {
+      this.setState({
+        numOfSeasons: result.number_of_seasons,
+        numOfEpisodes: result.number_of_episodes,
+        avgEpisodeTime: result.episode_run_time.reduce((a,e) => a + e, 0) / result.episode_run_time.length,
+        searchedSeason: result.number_of_seasons
+      });
+    });
 
-  // Use your imagination to render suggestions.
+    return suggestion.original_name;
+  }
+
   renderSuggestion (suggestion) {
     return (
-      <div>
+      <div className="suggestion-option">
         {suggestion.original_name}
       </div>
     );
@@ -73,12 +90,20 @@ class App extends Component {
     });
   }
 
+  triggerCalculation() {
+    this.setState({
+      seriesName: this.state.searchedSeries,
+      numOfHours: `${this.state.avgEpisodeTime * this.state.searchedSeason} hours`
+    });
+  }
+
   render() {
     const {
       numOfHours,
       seriesName,
       suggestions,
-      searchedSeries
+      searchedSeries,
+      searchedSeason
     } = this.state;
 
     const inputProps = {
@@ -110,14 +135,18 @@ class App extends Component {
             <SearchBar
               placeholder="#"
               className="season-search"
+              value={searchedSeason}
               onChange={this.handleSeasonSearchChange}
             />
          </div>
-          <Button buttonText="search" onClick={this.triggerSearch}/>
+          <Button buttonText="calculate" onClick={this.triggerCalculation}/>
         </div>
         <div className="info-bar">
           <InfoBar numOfHours={numOfHours} seriesName={seriesName}/>
-          <Button buttonText="use calendar" />
+          <Button dataTip dataFor="useCalendarBtn" buttonText="use calendar" />
+          <ReactTooltip id="useCalendarBtn">
+            <span>under construction</span>
+          </ReactTooltip>
         </div>
       </div>
     );

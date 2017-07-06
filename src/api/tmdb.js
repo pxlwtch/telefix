@@ -3,7 +3,9 @@ import request from 'superagent';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const CONFIG_PATH = '/configuration';
 const SEARCH_TV_PATH = '/search/tv';
+const TV_PATH = '/tv';
 const AK = 'fa3f0c4d7cac08acc1144300e26cbf75';
+const LANGUAGE = 'en-US';
 
 // result from https://api.themoviedb.org/3/configuration
 const configuration = {
@@ -112,12 +114,11 @@ export function searchAPIWithQuery(query) {
   const q = escapeRegexCharacters(query);
   return new Promise((resolve, reject) => {
     request
-    .get(`${BASE_URL}${SEARCH_TV_PATH}?api_key=${AK}&query=${q}`)
+    .get(`${BASE_URL}${SEARCH_TV_PATH}?api_key=${AK}&query=${q}&page=1`)
     .end((error, result) => {
       if (error) {
         reject(error);
       }
-      console.log(result.body);
       resolve(result.body);
     });
   });
@@ -127,8 +128,22 @@ export function getTitlesFromSearch(result) {
   return new Promise((resolve) => {
     if (!result) resolve([]);
     if (result.total_results) {
-      resolve(result.results);
+      resolve(result.results.slice(0,10));
     }
     resolve([]);
   });
+}
+
+export function getTVShowFromId(id) {
+  return new Promise((resolve, reject) => {
+    request
+    .get(`${BASE_URL}${TV_PATH}/${id}?api_key=${AK}&language=${LANGUAGE}`)
+    .end((error, result) => {
+      if (error) {
+        reject(error);
+      }
+      resolve(result.body);
+    });
+  });
+
 }
