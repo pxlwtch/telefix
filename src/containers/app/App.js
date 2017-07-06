@@ -24,7 +24,7 @@ class App extends Component {
       seriesName: "[y]",
       suggestions: [],
       numOfSeasons: 0,
-      numOfEpisodes: 0,
+      numOfEpisodesPerSeason: 0,
       avgEpisodeTime: 0
     };
 
@@ -48,9 +48,10 @@ class App extends Component {
   getSuggestionValue(suggestion) { 
     getTVShowFromId(suggestion.id)
     .then((result) => {
+      console.log(result);
       this.setState({
         numOfSeasons: result.number_of_seasons,
-        numOfEpisodes: result.number_of_episodes,
+        numOfEpisodesPerSeason: result.number_of_episodes / result.number_of_seasons,
         avgEpisodeTime: result.episode_run_time.reduce((a,e) => a + e, 0) / result.episode_run_time.length,
         searchedSeason: result.number_of_seasons
       });
@@ -93,7 +94,7 @@ class App extends Component {
   triggerCalculation() {
     this.setState({
       seriesName: this.state.searchedSeries,
-      numOfHours: `${this.state.avgEpisodeTime * this.state.searchedSeason} hours`
+      numOfHours: `${(this.state.avgEpisodeTime * this.state.searchedSeason * this.state.numOfEpisodesPerSeason)/ 60} hours`
     });
   }
 
