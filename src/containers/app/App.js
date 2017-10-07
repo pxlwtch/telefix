@@ -11,7 +11,6 @@ import {
   getTitlesFromSearch,
   searchAPIWithQuery,
   getTVShowFromId
-
 } from '../../api/tmdb';
 
 class App extends Component {

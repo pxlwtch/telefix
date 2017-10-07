@@ -35,7 +35,7 @@
 .title {
   margin: 200px 0px 0px 0px;
   font-weight: 500;
-  font-size: 96px;
+  font-size: 56px;
   letter-spacing: 7.1px;
   text-align: center;
   color: #585858;
@@ -47,8 +47,9 @@
 }
 
 .react-autosuggest__input {
-  height: 60px;
-  font-size: 40px;
+  height: 35px;
+  width: 500px;
+  font-size: 18px;
   border-radius: 7px;
   border: solid 1px #979797;
   outline:0px !important;
@@ -69,7 +70,7 @@
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
   -webkit-padding-start: 0px;
-  font-size: 22px;
+  font-size: 18px;
 }
 
 .react-autosuggest__suggestion {
