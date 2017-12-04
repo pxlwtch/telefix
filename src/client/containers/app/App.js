@@ -17,10 +17,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchedSeries: "",
-      searchedSeason: "",
-      numOfHours: "[x]",
-      seriesName: "[y]",
+      searchedSeries: '',
+      searchedSeason: '',
+      numOfHours: '[x]',
+      seriesName: '[y]',
       suggestions: [],
       numOfSeasons: 0,
       numOfEpisodesPerSeason: 0,
@@ -30,28 +30,33 @@ class App extends Component {
     this.handleSeasonSearchChange = this.handleSeasonSearchChange.bind(this);
     this.getSuggestionValue = this.getSuggestionValue.bind(this);
     this.renderSuggestion = this.renderSuggestion.bind(this);
-    this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
-    this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
+    this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(
+      this
+    );
+    this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(
+      this
+    );
     this.onChange = this.onChange.bind(this);
     this.triggerCalculation = this.triggerCalculation.bind(this);
   }
 
   handleSeasonSearchChange(event) {
     event.preventDefault();
-    this.setState({searchedSeason: event.target.value});
+    this.setState({ searchedSeason: event.target.value });
   }
 
   // When suggestion is clicked, Autosuggest needs to populate the input element
   // based on the clicked suggestion. Teach Autosuggest how to calculate the
   // input value for every given suggestion.
-  getSuggestionValue(suggestion) { 
-    getTVShowFromId(suggestion.id)
-    .then((result) => {
-      console.log(result);
+  getSuggestionValue(suggestion) {
+    getTVShowFromId(suggestion.id).then(result => {
       this.setState({
         numOfSeasons: result.number_of_seasons,
-        numOfEpisodesPerSeason: result.number_of_episodes / result.number_of_seasons,
-        avgEpisodeTime: result.episode_run_time.reduce((a,e) => a + e, 0) / result.episode_run_time.length,
+        numOfEpisodesPerSeason:
+          result.number_of_episodes / result.number_of_seasons,
+        avgEpisodeTime:
+          result.episode_run_time.reduce((a, e) => a + e, 0) /
+          result.episode_run_time.length,
         searchedSeason: result.number_of_seasons
       });
     });
@@ -59,22 +64,18 @@ class App extends Component {
     return suggestion.original_name;
   }
 
-  renderSuggestion (suggestion) {
-    return (
-      <div className="suggestion-option">
-        {suggestion.original_name}
-      </div>
-    );
+  renderSuggestion(suggestion) {
+    return <div className="suggestion-option">{suggestion.original_name}</div>;
   }
   // Autosuggest will call this function every time you need to update suggestions.
   // You already implemented this logic above, so just use it.
   onSuggestionsFetchRequested({ value }) {
-    if(value && this.state.searchedSeries) {
-       searchAPIWithQuery(this.state.searchedSeries)
-      .then(getTitlesFromSearch)
-      .then((result) => {
-        this.setState({suggestions: result});
-      });
+    if (value.length > 1) {
+      searchAPIWithQuery(value)
+        .then(getTitlesFromSearch)
+        .then(result => {
+          this.setState({ suggestions: result });
+        });
     }
   }
   // Autosuggest will call this function every time you need to clear suggestions.
@@ -93,7 +94,10 @@ class App extends Component {
   triggerCalculation() {
     this.setState({
       seriesName: this.state.searchedSeries,
-      numOfHours: `${(this.state.avgEpisodeTime * this.state.searchedSeason * this.state.numOfEpisodesPerSeason)/ 60} hours`
+      numOfHours: `${this.state.avgEpisodeTime *
+        this.state.searchedSeason *
+        this.state.numOfEpisodesPerSeason /
+        60} hours`
     });
   }
 
@@ -124,7 +128,7 @@ class App extends Component {
         <div className="title-container">
           <h1 className="title">telefix</h1>
           <div className="bars-container">
-             <Autosuggest
+            <Autosuggest
               suggestions={suggestions}
               onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
               onSuggestionsClearRequested={this.onSuggestionsClearRequested}
@@ -138,11 +142,11 @@ class App extends Component {
               value={searchedSeason}
               onChange={this.handleSeasonSearchChange}
             />
-         </div>
-          <Button buttonText="calculate" onClick={this.triggerCalculation}/>
+          </div>
+          <Button buttonText="calculate" onClick={this.triggerCalculation} />
         </div>
         <div className="info-bar">
-          <InfoBar numOfHours={numOfHours} seriesName={seriesName}/>
+          <InfoBar numOfHours={numOfHours} seriesName={seriesName} />
           <Button dataTip dataFor="useCalendarBtn" buttonText="use calendar" />
           <ReactTooltip id="useCalendarBtn">
             <span>under construction</span>
