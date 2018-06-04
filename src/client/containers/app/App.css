@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+  background-image: url('../../images/telefix-background.png');
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .App-header {
@@ -11,6 +18,10 @@
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+}
+
+.background-image {
+  z-index: -1;
 }
 
 .item-1 {
@@ -39,7 +50,7 @@
   letter-spacing: 7.1px;
   text-align: center;
   color: #585858;
-  text-shadow: 3px -2px 3px rgba(0,0,0,0.5);
+  text-shadow: 3px -2px 3px rgba(0, 0, 0, 0.5);
 }
 .bars-container {
   display: flex;
@@ -52,10 +63,10 @@
   font-size: 18px;
   border-radius: 7px;
   border: solid 1px #979797;
-  outline:0px !important;
-  -webkit-appearance:none;
+  outline: 0px !important;
+  -webkit-appearance: none;
   padding-left: 32px;
-  font-family: "Varela Round", sans-serif;
+  font-family: 'Varela Round', sans-serif;
 }
 
 .react-autosuggest__suggestions-container {

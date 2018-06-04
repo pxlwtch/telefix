@@ -5,7 +5,7 @@ import './App.css';
 import InfoBar from '../../components/info-bar/InfoBar';
 import SearchBar from '../../components/search-bar/SearchBar';
 import Button from '../../components/button/Button';
-import { telefixLogoPng } from '../../images/images';
+import { telefixLogoPng, telefixBackgroundPng } from '../../images/images';
 import SMPTEBackground from '../../components/smpte-background/SMPTEBackground';
 import {
   getTitlesFromSearch,
@@ -118,7 +118,6 @@ class App extends Component {
 
     return (
       <div className="App">
-        <SMPTEBackground />
         <div className="App-header">
           <div className="item-1">
             <img alt="Telefix logo" src={telefixLogoPng} />
